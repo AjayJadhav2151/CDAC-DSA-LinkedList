@@ -1,0 +1,320 @@
+************************************NODE****************************************
+package linkedList;
+
+public class Node {
+	
+	private int data;
+	private Node next;
+	
+	public Node() {
+		data=0;
+		next=null;
+	}
+
+	public int getData() {
+		return data;
+	}
+
+	public void setData(int value) {
+		this.data = value;
+	}
+
+	public Node getNext() {
+		return next;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+}
+*********************************************SINGLELINKEDLIST**************************************
+package linkedList;
+
+import java.util.Scanner;
+
+public class SingleLinked_List {
+	private Node head;
+	
+	public SingleLinked_List() {
+		head=null;	
+	}
+
+	public void setHead(Node newnode) {
+		this.head = newnode;
+	}
+	
+	public Node createNewNode() {
+		Node newnode = new Node();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Data value:");
+		newnode.setData(sc.nextInt());
+		newnode.setNext(null);
+		return newnode;
+	}
+	 
+	public void addstart() {
+		Node newnode = createNewNode();
+		if(head==null) {
+			head=newnode;
+		}
+		else 
+		{
+			newnode.setNext(head);
+			head = newnode;
+		}		
+	}
+	
+	public void addlast() {
+		Node newnode = createNewNode();
+		if(head==null) {
+			head=newnode;
+		}
+		else 
+		{
+			Node temp=head;
+			while(temp.getNext()!=null) {
+				temp=temp.getNext();
+			}
+			temp.setNext(newnode);
+		}
+	}
+	
+	public void AddMid(int value) {
+		Node newnode = createNewNode();
+		Node temp=null;
+		if(head==null) {
+			head=newnode;
+		}
+		else if(head.getNext() == null) {
+			if(head.getData()==value) {
+				head.setNext(newnode);
+			} 
+			else 
+			{
+				System.out.println("\tError::Node not exists....!!!!");
+			}
+		} 
+		else {
+			temp=head;
+			while(temp!=null && temp.getData()!=value) {
+				temp=temp.getNext();
+			}
+			if(temp!=null) {
+				newnode.setNext(temp.getNext());
+				temp.setNext(newnode);
+			}
+		}
+	}
+	
+	public void display() {
+		Node temp = head;
+		if(head==null) {
+			System.out.println("\n\nLinkedList is Empty.....");
+		}
+		else
+		{
+			while(temp!=null) {
+				System.out.print(temp.getData()+"->");
+				temp = temp.getNext();
+			}
+			System.out.println("null");
+		}
+	}
+	
+	public int getCount() {
+		int count=0;
+		if(head==null) {
+			return count;
+		}
+		else 
+		{
+			Node temp=head;
+			while(temp!=null) {
+				count++;
+				temp = temp.getNext();
+			}
+		}
+		System.out.println("Count is: "+count);
+		return count;
+	}
+}
+**********************************************************ClientLINKEDLIST********************************************
+package linkedList;
+
+import java.util.Scanner;
+
+public class ClientLinkedList {
+
+	public static void main(String[] args) {
+		SingleLinked_List l = new SingleLinked_List();
+		Scanner sc = new Scanner(System.in);
+		
+		int option = 0;
+		
+		do {
+			System.out.println(">>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<");
+			System.out.println("\n 1.Create Node"+
+								"\n 2.Add first"+
+								"\n 3.Add Last"+
+								"\n 4.Add Mid"+
+								"\n 5.Count Linked List"+
+								"\n 11.display"+
+								"\n 0.exit");
+			System.out.println("Enter your choice:: ");
+			option=sc.nextInt();
+			
+			switch(option) {
+			case 1:
+				Node newnode = l.createNewNode();
+				l.setHead(newnode);
+				System.out.println("\n Linked List created...............");
+				break;
+			case 2: 
+				l.addstart();
+				break;
+			case 3:
+				l.addlast();
+				break;
+			case 4: 
+				int value;
+				System.out.println("Enter Element ::");
+				value = sc.nextInt();
+				l.AddMid(value);
+				break;
+			case 5:
+				l.getCount();
+				break;
+			case 11:
+				System.out.println("...................................");
+				l.display();
+				System.out.println("...................................");
+				break;
+			case 0:
+				System.out.println("End.....................");
+				System.exit(0);
+			
+			}
+		}while(option != 0);
+
+	}
+
+}
+**************************************************output*****************************************************
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+1
+Enter Data value:
+11
+
+ Linked List created...............
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+2
+Enter Data value:
+22
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+3
+Enter Data value:
+33
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+3
+Enter Data value:
+44
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+3
+Enter Data value:
+55
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+4
+Enter Element ::
+44
+Enter Data value:
+88
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+11
+...................................
+22->11->33->44->88->55->null
+...................................
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 
+5
+Count is: 6
+>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<
+
+ 1.Create Node
+ 2.Add first
+ 3.Add Last
+ 4.Add Mid
+ 5.Count Linked List
+ 11.display
+ 0.exit
+Enter your choice:: 

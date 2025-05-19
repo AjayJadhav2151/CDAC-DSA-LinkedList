@@ -1,0 +1,33 @@
+public void findmax() {
+		Node temp=head;
+		int max=head.getData();
+		while(temp.getNext()!=null) {
+			if(max<temp.getNext().getData()) {
+				max=temp.getNext().getData();
+			}
+			temp= temp.getNext();
+		}
+		System.out.println("Max value is:: "+max);
+	}
+	
+	public void findOccurence(int value) {
+		Node temp=head;
+		int count=0;
+		while(temp!=null) {
+			if(temp.getData()==value) {
+				count++;
+			}
+			temp= temp.getNext();
+		}
+		System.out.println("Occurancee is:: "+count);
+		
+	}
+*******************************************************
+case 12:
+				l.findmax();
+				break;
+case 13:
+				System.out.println("Enter value ::");
+				value = sc.nextInt();
+				l.findOccurence(value);
+				break;
